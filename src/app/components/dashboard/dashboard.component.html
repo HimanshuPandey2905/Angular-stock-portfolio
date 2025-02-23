@@ -1,0 +1,90 @@
+<!-- <div #pdfContent>
+  <h2>Dashboard</h2>
+  <p>Total Invested: {{ totalInvestments | currency }}</p>
+  <p>Current Value: {{ currentValue | currency }}</p>
+  <p>
+    Profit/Loss:
+    <span [ngClass]="profitLoss >= 0 ? 'profit' : 'loss'">
+      {{ profitLoss | currency }}
+    </span>
+  </p>
+
+  <div style="width: 400px">
+    <canvas baseChart [data]="pieChartData" [type]="pieChartType"></canvas>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Stock</th>
+        <th>Quantity</th>
+        <th>Avg. Price</th>
+        <th>Current Price</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of holdings">
+        <td routerLink="/stock-details/{{ stock.symbol }}">
+          {{ stock.symbol }}
+        </td>
+        <td>{{ stock.quantity }}</td>
+        <td>{{ stock.avgPrice | currency }}</td>
+        <td>{{ stock.price ? (stock.price | currency) : "Fetching..." }}</td>
+        <td>
+          {{ (stock.price ? stock.price * stock.quantity : 0) | currency }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button (click)="downloadPDF()">Download PDF</button> -->
+<!-- dashboard.component.html -->
+
+<div class="dashboard-container">
+  <div class="header-section">
+    <h2>Dashboard</h2>
+    <div class="investment-summary">
+      <p>Total Invested: {{ totalInvestments | currency }}</p>
+      <p>Current Value: {{ currentValue | currency }}</p>
+      <p>
+        Profit/Loss:
+        <span [ngClass]="profitLoss >= 0 ? 'profit' : 'loss'">
+          {{ profitLoss | currency }}
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <canvas baseChart [data]="pieChartData" [type]="pieChartType"></canvas>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Stock</th>
+        <th>Quantity</th>
+        <th>Avg. Price</th>
+        <th>Current Price</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of holdings">
+        <td routerLink="/stock-details/{{ stock.symbol }}">
+          {{ stock.symbol }}
+        </td>
+        <td>{{ stock.quantity }}</td>
+        <td>{{ stock.avgPrice | currency }}</td>
+        <td>{{ stock.price ? (stock.price | currency) : "Fetching..." }}</td>
+        <td>
+          {{ (stock.price ? stock.price * stock.quantity : 0) | currency }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="download-button" (click)="downloadPDF()">Download PDF</button>
+</div>

@@ -1,0 +1,79 @@
+<div class="stock-details">
+  <h2>{{ stockSymbol }} Details</h2>
+
+  <div *ngIf="isLoading">Loading stock details...</div>
+
+  <div class="input-group">
+    <label>Quantity:</label>
+    <input
+      type="number"
+      [(ngModel)]="quantity"
+      min="1"
+      placeholder="Enter quantity"
+    />
+  </div>
+
+  <div class="input-group">
+    <label>Custom Price (Optional):</label>
+    <input
+      type="number"
+      [(ngModel)]="customPrice"
+      min="0"
+      placeholder="Enter price (default: {{ currentPrice | number : '1.2-2' }})"
+    />
+  </div>
+
+  <div class="button-group">
+    <button class="buy-button" (click)="buyStock()" [disabled]="quantity <= 0">
+      Buy
+    </button>
+    <button
+      class="sell-button"
+      (click)="sellStock()"
+      [disabled]="quantity <= 0"
+    >
+      Sell
+    </button>
+  </div>
+
+  <div *ngIf="details && !isLoading" class="company-info">
+    <h3>Company Information</h3>
+    <p><strong>Address:</strong> {{ details.address1 }}</p>
+    <p><strong>City:</strong> {{ details.city }}</p>
+    <p><strong>State:</strong> {{ details.state }}</p>
+    <p><strong>Zip:</strong> {{ details.zip }}</p>
+    <p><strong>Phone:</strong> {{ details.phone }}</p>
+    <p>
+      <strong>Website:</strong>
+      <a href="{{ details.website }}" target="_blank">{{ details.website }}</a>
+    </p>
+    <p><strong>Industry:</strong> {{ details.industry }}</p>
+    <p><strong>Summary:</strong> {{ details.longBusinessSummary }}</p>
+  </div>
+
+  <div *ngIf="historyData.length">
+    <h3>Historical Price</h3>
+    <label>Range:</label>
+    <select [(ngModel)]="selectedRange" (change)="onRangeChange()">
+      <option
+        *ngFor="
+          let range of ['5m', '15m', '30m', '1h', '1d', '1wk', '1mo', '3mo']
+        "
+        [value]="range"
+        [selected]="range === selectedRange"
+      >
+        {{ range }}
+      </option>
+    </select>
+
+    <div style="width: 100%; max-width: 600px">
+      <canvas
+        baseChart
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="'line'"
+      >
+      </canvas>
+    </div>
+  </div>
+</div>

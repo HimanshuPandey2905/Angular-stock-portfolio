@@ -1,0 +1,47 @@
+<div class="watchlist-container">
+  <h2>Market Watchlist</h2>
+
+  <!-- Search Box -->
+  <div class="search-box">
+    <input
+      #stockInput
+      type="text"
+      placeholder="Search Stock Symbol..."
+      (input)="onSearchInput(stockInput.value)"
+    />
+    <button (click)="searchStocks(stockInput.value)">🔍 Search</button>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div *ngIf="loading" class="loading">Searching...</div>
+
+  <!-- Search Results -->
+  <div class="search-results" *ngIf="!loading">
+    <p *ngIf="searchResults.length === 0">No results found.</p>
+    <ul *ngIf="searchResults.length > 0">
+      <li *ngFor="let stock of searchResults">
+        <span>{{ stock.symbol }} - {{ stock.name }}</span>
+        <button
+          (click)="addToWatchlist(stock)"
+          [disabled]="isInWatchlist(stock.symbol)"
+        >
+          {{ isInWatchlist(stock.symbol) ? '✓ Added' : '➕ Add' }}
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <h3>Your Watchlist</h3>
+  <div class="watchlist">
+    <p *ngIf="watchlist.length === 0">No stocks in watchlist.</p>
+    <ul>
+      <li *ngFor="let stock of watchlist">
+        <a routerLink="/stock-details/{{ stock.symbol }}">
+          {{ stock.symbol }} - 
+          <span [appLivePrice]="stock.price">{{ stock.price | currency }}</span>
+        </a>
+        <button (click)="removeFromWatchlist(stock.symbol)">❌ Remove</button>
+      </li>
+    </ul>
+  </div>
+</div>

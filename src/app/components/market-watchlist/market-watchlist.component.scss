@@ -1,0 +1,54 @@
+.watchlist {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+
+  input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+  }
+
+  button {
+    padding: 10px 15px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background: darken(var(--primary-color), 10%);
+    }
+  }
+}
+
+.stock-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid var(--secondary-color);
+
+    .stock-name {
+      font-weight: bold;
+    }
+
+    .price {
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}

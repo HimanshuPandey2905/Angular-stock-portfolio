@@ -1,0 +1,13 @@
+<nav>
+  <ul>
+    <li><a routerLink="/dashboard">Dashboard</a></li>
+    <li><a routerLink="/market">Market</a></li>
+    <li><a routerLink="/orders">Orders</a></li>
+    <li><a routerLink="/news">News</a></li>
+  </ul>
+
+  <!-- Dark Mode Toggle Button -->
+  <button (click)="toggleDarkMode()" class="dark-mode-toggle">
+    {{ isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode" }}
+  </button>
+</nav>

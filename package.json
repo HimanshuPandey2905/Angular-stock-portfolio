@@ -18,8 +18,16 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "angular-highcharts": "^17.0.1",
+    "chart.js": "^3.9.1",
+    "file-saver": "^2.0.5",
+    "highcharts": "^12.1.2",
+    "jspdf": "^3.0.0",
+    "ng2-charts": "^3.0.1",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
