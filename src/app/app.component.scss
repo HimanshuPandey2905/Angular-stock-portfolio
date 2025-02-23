@@ -1,3 +1,9 @@
 .app {
   display: flex;
 }
+
+.dark-mode-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}

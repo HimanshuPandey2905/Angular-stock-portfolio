@@ -1,25 +1,31 @@
-<div *ngIf="loading" class="loading">Loading latest stock news...</div>
+<div class="news-container">
+  <div *ngIf="loading" class="loading">Loading latest stock news...</div>
 
-<input
-  [(ngModel)]="searchQuery"
-  placeholder="Search stock news..."
-  (keyup.enter)="searchNews()"
-/>
-<button (click)="searchNews()">Search</button>
+  <div *ngIf="!loading">
+    <div class="header">
+      <h2>📈 Stock Market News</h2>
 
-<div *ngIf="!loading">
-  <h2>📈 Stock Market News</h2>
-  <div class="news-container">
-    <div *ngFor="let article of newsArticles" class="news-card">
-      <img
-        [src]="article.urlToImage || 'assets/news-placeholder.jpg'"
-        alt="News Image"
-        class="news-image"
-      />
-      <div class="news-content">
-        <h3>{{ article.title }}</h3>
-        <p>{{ article.description }}</p>
-        <a [href]="article.url" target="_blank">Read More</a>
+      <div class="search">
+        <input
+          [(ngModel)]="searchQuery"
+          placeholder="Search stock news..."
+          (keyup.enter)="searchNews()"
+        />
+        <button (click)="searchNews()">Search</button>
+      </div>
+    </div>
+    <div class="news">
+      <div *ngFor="let article of newsArticles" class="news-card">
+        <img
+          [src]="article.urlToImage || 'assets/news-placeholder.jpg'"
+          alt="News Image"
+          class="news-image"
+        />
+        <div class="news-content">
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.description }}</p>
+          <a [href]="article.url" target="_blank">Read More</a>
+        </div>
       </div>
     </div>
   </div>

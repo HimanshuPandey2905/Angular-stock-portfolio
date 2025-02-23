@@ -1,13 +1,15 @@
-<nav>
+<nav class="sidebar">
+  <div class="logo">
+    <img
+      src="https://images.seeklogo.com/logo-png/48/2/zerodha-kite-logo-png_seeklogo-487028.png"
+      alt=""
+    />
+    <p class="logo-title">Zerodha</p>
+  </div>
   <ul>
-    <li><a routerLink="/dashboard">Dashboard</a></li>
-    <li><a routerLink="/market">Market</a></li>
-    <li><a routerLink="/orders">Orders</a></li>
-    <li><a routerLink="/news">News</a></li>
+    <li routerLink="/dashboard" routerLinkActive="active">Dashboard</li>
+    <li routerLink="/market" routerLinkActive="active">Market</li>
+    <li routerLink="/orders" routerLinkActive="active">Orders</li>
+    <li routerLink="/news" routerLinkActive="active">News</li>
   </ul>
-
-  <!-- Dark Mode Toggle Button -->
-  <button (click)="toggleDarkMode()" class="dark-mode-toggle">
-    {{ isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode" }}
-  </button>
 </nav>

@@ -11,13 +11,15 @@
   --shadow-dark: 0 4px 20px rgba(0, 0, 0, 0.2);
   --profit-color: #27ae60;
   --loss-color: #e74c3c;
+  --border-color: rgba(0, 0, 0, 0.1);
 }
 
 .dark-mode {
   --background-color: #181818;
   --text-color: #f0f0f0;
   --card-bg: #222;
-  --primary-color: #00b894;
+  --primary-color: #1e88e5;
+  --border-color: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -31,4 +33,18 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   transition: all 0.3s ease-in-out;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: darken(#1e88e5, 10%);
+  }
 }
